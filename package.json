@@ -11,7 +11,7 @@
     "type-check": "tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prepare": "husky install",
+    "prepare": "husky",
     "orval": "rm -rf ./src/api/orval && orval",
     "after-script": "prettier --write 'src/api/orval/**/*' && echo 'API 생성 완료'"
   },
@@ -35,7 +35,6 @@
     "@commitlint/config-conventional": "^19.8.1",
     "@eslint/eslintrc": "^3",
     "@orval/core": "^7.11.2",
-    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -49,7 +48,6 @@
     "lint-staged": "^16.1.5",
     "orval": "^7.11.2",
     "prettier": "^3.6.2",
-    "tailwindcss": "^4",
     "typescript": "^5"
   },
   "lint-staged": {

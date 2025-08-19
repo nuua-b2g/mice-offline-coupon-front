@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Coupon Admin Frontend
 
-## Getting Started
+쿠폰 관리 시스템의 관리자용 프론트엔드 애플리케이션입니다.
 
-First, run the development server:
+## 🚀 시작하기
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 필수 요구사항
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Node.js**: 18.0.0 이상
+- **pnpm**: 9.0.0 이상 (권장 패키지 매니저)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 설치 및 실행
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **저장소 클론**
 
-## Learn More
+   ```bash
+   git clone <repository-url>
+   cd coupon-admin-front
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **의존성 설치**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   pnpm install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. **Husky 설정** (Git hooks 활성화)
 
-## Deploy on Vercel
+   ```bash
+   pnpm prepare
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. **개발 서버 실행**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```bash
+   pnpm dev
+   ```
+
+5. **브라우저에서 확인**
+
+   [http://localhost:3000](http://localhost:3000)을 열어 애플리케이션을 확인하세요.
+
+## 📝 사용 가능한 스크립트
+
+- `pnpm dev` - 개발 서버 실행 (Turbopack 사용)
+- `pnpm build` - 프로덕션 빌드
+- `pnpm start` - 프로덕션 서버 실행
+- `pnpm lint` - ESLint 검사
+- `pnpm lint:fix` - ESLint 자동 수정
+- `pnpm type-check` - TypeScript 타입 체크
+- `pnpm format` - Prettier 포맷팅
+- `pnpm format:check` - Prettier 포맷 체크
+- `pnpm orval` - API 코드 생성
+
+## 🛠 기술 스택
+
+### 프레임워크 & 라이브러리
+
+- **Next.js 15** - React 프레임워크
+- **React 19** - UI 라이브러리
+- **TypeScript** - 타입 안정성
+
+### 상태 관리 & API
+
+- **Zustand** - 전역 상태 관리
+- **TanStack Query** - 서버 상태 관리
+- **Axios** - HTTP 클라이언트
+
+### UI 컴포넌트 & 유틸리티
+
+- **TanStack Table** - 테이블 컴포넌트
+- **Ant Design Icons** - 아이콘
+- **Toast UI Editor** - 에디터
+- **date-fns** - 날짜 유틸리티
+- **jwt-decode** - JWT 토큰 디코딩
+- **universal-cookie** - 쿠키 관리
+
+### 개발 도구
+
+- **ESLint** - 코드 품질 검사
+- **Prettier** - 코드 포맷팅
+- **Husky** - Git hooks
+- **lint-staged** - 스테이징된 파일 검사
+- **Commitlint** - 커밋 메시지 규칙
+- **Orval** - API 코드 생성

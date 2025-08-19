@@ -39,3 +39,27 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Husky
+.husky/_
+
+# Lint-staged
+*.log
+
+# Build outputs
+dist/
+
+# Dependencies
+.pnp.js
+
+# Environment variables
+.env*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
