@@ -1,1 +1,6 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🧹 코드 품질 검사 및 포맷팅 중..."
 npx lint-staged
+echo "✅ Pre-commit 검사 완료!"

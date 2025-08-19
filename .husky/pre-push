@@ -1,1 +1,12 @@
-pnpm type-check && pnpm build
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# 타입 체크
+echo "🔍 타입 체크 중..."
+pnpm type-check
+
+# 빌드 테스트
+echo "🏗️  빌드 테스트 중..."
+pnpm build
+
+echo "✅ Pre-push 검사 완료!"
