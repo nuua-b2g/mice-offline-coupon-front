@@ -27,11 +27,3 @@ a {
 button {
   font-family: inherit;
 }
-
-/* 다크 모드 지원 */
-@media (prefers-color-scheme: dark) {
-  body {
-    color: #ededed;
-    background: #0a0a0a;
-  }
-}
