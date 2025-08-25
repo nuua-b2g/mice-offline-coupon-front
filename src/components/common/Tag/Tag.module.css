@@ -1,0 +1,78 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  line-height: 1.5;
+  border-radius: 6px;
+  cursor: default;
+  transition: all 0.15s ease;
+  user-select: none;
+  border: none;
+  letter-spacing: -0.025em;
+}
+
+.tag:hover {
+  opacity: 0.85;
+}
+
+.closeIcon {
+  margin-left: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.15s ease;
+}
+
+.closeIcon:hover {
+  opacity: 1;
+}
+
+/* 색상 변형 */
+.primary {
+  background-color: #eff6ff;
+  color: #1e40af;
+}
+
+.secondary {
+  background-color: #f9fafb;
+  color: #374151;
+}
+
+.success {
+  background-color: #f0fdf4;
+  color: #166534;
+}
+
+.warning {
+  background-color: #fffbeb;
+  color: #d97706;
+}
+
+.danger {
+  background-color: #fef2f2;
+  color: #dc2626;
+}
+
+.info {
+  background-color: #eff6ff;
+  color: #1e40af;
+}
+
+.light {
+  background-color: #f9fafb;
+  color: #6b7280;
+}
+
+.dark {
+  background-color: #111827;
+  color: #ffffff;
+}
