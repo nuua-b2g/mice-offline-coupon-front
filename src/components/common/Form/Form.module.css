@@ -1,0 +1,319 @@
+/* Form Container */
+.form {
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Form Fields Container */
+.formFields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+/* Form Field */
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formField.hasError .formInput {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+/* Form Label */
+.formLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.required {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+/* Form Input */
+.formInput {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+  outline: none;
+  color: #111827;
+}
+
+.formInput:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.formInput:disabled {
+  background-color: #f9fafb;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+.formInput::placeholder {
+  color: #9ca3af;
+}
+
+/* Textarea */
+.textarea {
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+/* Select */
+.select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 8px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  padding-right: 36px;
+}
+
+/* Checkbox Group */
+.checkboxGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #374151;
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: #3b82f6;
+  cursor: pointer;
+}
+
+/* Radio Group */
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #374151;
+}
+
+.radio {
+  width: 16px;
+  height: 16px;
+  accent-color: #3b82f6;
+  cursor: pointer;
+}
+
+/* Date Input */
+.dateInput {
+  cursor: pointer;
+}
+
+/* Error Message */
+.errorMessage {
+  font-size: 12px;
+  color: #dc2626;
+  margin-top: 4px;
+}
+
+/* Form Actions */
+.formActions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* Submit Button */
+.submitButton {
+  padding: 10px 20px;
+  background-color: #3b82f6;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 100px;
+}
+
+.submitButton:hover:not(:disabled) {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.submitButton:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.submitButton.loading {
+  background-color: #6b7280;
+  cursor: not-allowed;
+}
+
+/* Cancel Button */
+.cancelButton {
+  padding: 10px 20px;
+  background-color: #ffffff;
+  color: #6b7280;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 100px;
+}
+
+.cancelButton:hover:not(:disabled) {
+  background-color: #f9fafb;
+  border-color: #d1d5db;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cancelButton:disabled {
+  background-color: #f9fafb;
+  color: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Layout Variants */
+.form--horizontal .formField {
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+.form--horizontal .formLabel {
+  min-width: 120px;
+  flex-shrink: 0;
+}
+
+.form--horizontal .formInput {
+  flex: 1;
+}
+
+.form--inline .formFields {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.form--inline .formField {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Size Variants */
+.form--small .formInput {
+  padding: 6px 10px;
+  font-size: 13px;
+}
+
+.form--small .formLabel {
+  font-size: 13px;
+}
+
+.form--small .submitButton,
+.form--small .cancelButton {
+  padding: 6px 16px;
+  font-size: 13px;
+}
+
+.form--large .formInput {
+  padding: 14px 16px;
+  font-size: 16px;
+}
+
+.form--large .formLabel {
+  font-size: 16px;
+}
+
+.form--large .submitButton,
+.form--large .cancelButton {
+  padding: 14px 24px;
+  font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .formFields {
+    gap: 16px;
+  }
+
+  .formActions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .submitButton,
+  .cancelButton {
+    width: 100%;
+  }
+
+  .form--horizontal .formField {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .form--horizontal .formLabel {
+    min-width: auto;
+  }
+
+  .form--inline .formField {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .formFields {
+    gap: 14px;
+  }
+
+  .formInput {
+    padding: 8px 10px;
+    font-size: 16px; /* 모바일에서 더 큰 폰트 */
+  }
+
+  .formLabel {
+    font-size: 13px;
+  }
+}
