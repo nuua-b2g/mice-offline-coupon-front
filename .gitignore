@@ -63,3 +63,6 @@ dist/
 
 # OS
 Thumbs.db
+
+*storybook.log
+storybook-static
