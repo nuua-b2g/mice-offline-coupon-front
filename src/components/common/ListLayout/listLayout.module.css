@@ -1,0 +1,210 @@
+/* List Layout Container */
+.listLayout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+}
+
+/* Header */
+.header {
+  padding: 24px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #ffffff;
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.titleSection {
+  flex: 1;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  color: #111827;
+  margin: 0 0 8px 0;
+  line-height: 1.5;
+  letter-spacing: -0.025em;
+}
+
+.description {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
+  letter-spacing: -0.025em;
+}
+
+.headerActions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Toolbar */
+.toolbar {
+  padding: 16px 24px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.toolbarContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Search Section */
+.searchSection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  overflow: visible;
+}
+
+.searchField {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* 아이콘 포함 패딩 */
+.searchInput {
+  width: 220px;
+  padding: 8px 12px 8px 36px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+  outline: none;
+  flex-shrink: 0;
+}
+
+.searchInput:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.searchInput::placeholder {
+  color: #9ca3af;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  color: #9ca3af;
+  font-size: 16px;
+  pointer-events: none;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  overflow: auto;
+  background: #ffffff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    padding: 16px;
+  }
+
+  .headerContent {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .toolbar {
+    padding: 12px 16px;
+  }
+
+  .toolbarContent {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .searchSection {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .searchField {
+    width: 100%;
+  }
+
+  .searchInput {
+    width: 100%;
+  }
+
+  .actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .headerActions,
+  .actions {
+    flex-direction: column;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .description {
+    font-size: 13px;
+  }
+
+  .searchSection {
+    gap: 10px;
+  }
+
+  .searchInput {
+    padding: 10px 12px 10px 36px;
+    font-size: 16px; /* 모바일에서 더 큰 폰트 */
+  }
+}
