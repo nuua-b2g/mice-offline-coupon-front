@@ -19,10 +19,6 @@ const meta = {
       control: 'boolean',
       description: '사이드바 접힘 상태',
     },
-    pageTitle: {
-      control: 'text',
-      description: '페이지 제목',
-    },
     showBackButton: {
       control: 'boolean',
       description: '뒤로가기 버튼 표시 여부',
@@ -43,7 +39,6 @@ const meta = {
   args: {
     showSidebar: true,
     sidebarCollapsed: false,
-    pageTitle: '대시보드',
     showBackButton: false,
     showActionBar: false,
   },
@@ -146,7 +141,6 @@ export const WithBackButton: Story = {
   args: {
     children: <SampleContent />,
     showBackButton: true,
-    pageTitle: '쿠폰 상세 정보',
   },
 };
 
@@ -156,7 +150,6 @@ export const WithActionBar: Story = {
     children: <SampleContent />,
     showActionBar: true,
     actionBarContent: <ActionBarContent />,
-    pageTitle: '쿠폰 등록',
   },
 };
 
@@ -167,7 +160,6 @@ export const WithBackButtonAndActionBar: Story = {
     showBackButton: true,
     showActionBar: true,
     actionBarContent: <ActionBarContent />,
-    pageTitle: '쿠폰 수정',
   },
 };
 
@@ -176,15 +168,6 @@ export const NoSidebar: Story = {
   args: {
     children: <SampleContent />,
     showSidebar: false,
-    pageTitle: '로그인',
-  },
-};
-
-// 다른 제목의 레이아웃
-export const CustomTitle: Story = {
-  args: {
-    children: <SampleContent />,
-    pageTitle: '관리자 대시보드',
   },
 };
 

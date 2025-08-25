@@ -6,6 +6,7 @@ import {
   RightOutlined,
 } from '@ant-design/icons';
 import { flexRender, Table as TanstackTable } from '@tanstack/react-table';
+import { PAGE_SIZE_DEFAULT } from '@/constants';
 import styles from './Table.module.css';
 
 type ColumnClassMeta = {
@@ -16,8 +17,6 @@ type ColumnClassMeta = {
 export interface TableProps<T> {
   table: TanstackTable<T>;
   showPagination?: boolean;
-  showPageSize?: boolean;
-  pageSizeOptions?: number[];
   emptyMessage?: string;
   onRowClick?: (row: T) => void;
   selectedRowId?: string;
@@ -29,8 +28,6 @@ export interface TableProps<T> {
 function Table<T>({
   table,
   showPagination = true,
-  showPageSize = false,
-  pageSizeOptions = [5, 10, 20, 30, 40, 50],
   emptyMessage = '데이터가 없습니다.',
   onRowClick,
   selectedRowId,
@@ -124,23 +121,6 @@ function Table<T>({
             <span>
               {currentPage + 1} / {totalPage}
             </span>
-            {showPageSize && (
-              <div className={styles.paginationSize}>
-                <span>페이지당 행:</span>
-                <select
-                  value={table.getState().pagination.pageSize}
-                  onChange={e => {
-                    table.setPageSize(Number(e.target.value));
-                  }}
-                >
-                  {pageSizeOptions.map(pageSize => (
-                    <option key={pageSize} value={pageSize}>
-                      {pageSize}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            )}
           </div>
           <div className={styles.paginationButtons}>
             <Button

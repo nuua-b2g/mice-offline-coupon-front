@@ -9,6 +9,7 @@ import {
   DefaultValues,
 } from 'react-hook-form';
 import styles from './Form.module.css';
+import Input, { InputProps } from '@/components/common/Input';
 
 export interface FormField {
   name: string;
@@ -258,54 +259,74 @@ const FormFieldItem: React.FC<{ field: FormField }> = ({ field }) => {
 
       case 'number':
         return (
-          <input
+          <Input
             id={fieldId}
             type="number"
-            aria-invalid={ariaInvalid}
-            aria-describedby={error ? `${fieldId}-error` : undefined}
             placeholder={field.placeholder}
             disabled={field.disabled}
             min={field.validation?.min}
             max={field.validation?.max}
-            className={commonClass}
+            error={error?.message}
             {...register(field.name, registerRules)}
           />
         );
 
       default:
         return (
-          <input
+          <Input
             id={fieldId}
             type={field.type}
-            aria-invalid={ariaInvalid}
-            aria-describedby={error ? `${fieldId}-error` : undefined}
             placeholder={field.placeholder}
             disabled={field.disabled}
-            className={commonClass}
+            error={error?.message}
             {...register(field.name, registerRules)}
           />
         );
     }
   };
 
+  const renderFieldWithLabel = () => {
+    const fieldElement = renderField();
+
+    // Input 컴포넌트는 이미 label과 error를 처리하므로 별도로 렌더링하지 않음
+    if (
+      field.type === 'text' ||
+      field.type === 'email' ||
+      field.type === 'password' ||
+      field.type === 'number'
+    ) {
+      return React.cloneElement(fieldElement as React.ReactElement<InputProps>, {
+        label: field.label,
+        required: field.required,
+      });
+    }
+
+    // 다른 타입들은 기존 방식대로 label과 error를 별도로 렌더링
+    return (
+      <>
+        <label
+          id={`${fieldId}-label`}
+          htmlFor={field.type === 'checkbox' || field.type === 'radio' ? undefined : fieldId}
+          className={styles.formLabel}
+        >
+          {field.label}
+          {field.required && <span className={styles.required}>*</span>}
+        </label>
+
+        {fieldElement}
+
+        {error && (
+          <span id={`${fieldId}-error`} className={styles.errorMessage}>
+            {error.message}
+          </span>
+        )}
+      </>
+    );
+  };
+
   return (
     <div className={`${styles.formField} ${error ? styles.hasError : ''}`}>
-      <label
-        id={`${fieldId}-label`}
-        htmlFor={field.type === 'checkbox' || field.type === 'radio' ? undefined : fieldId}
-        className={styles.formLabel}
-      >
-        {field.label}
-        {field.required && <span className={styles.required}>*</span>}
-      </label>
-
-      {renderField()}
-
-      {error && (
-        <span id={`${fieldId}-error`} className={styles.errorMessage}>
-          {error.message}
-        </span>
-      )}
+      {renderFieldWithLabel()}
     </div>
   );
 };

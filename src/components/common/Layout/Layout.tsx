@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowLeftOutlined, MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import styles from './layout.module.css';
 
@@ -6,7 +6,6 @@ export interface LayoutProps {
   children: React.ReactNode;
   showSidebar?: boolean;
   sidebarCollapsed?: boolean;
-  pageTitle?: string;
   showBackButton?: boolean;
   onBackClick?: () => void;
   showActionBar?: boolean;
@@ -18,14 +17,33 @@ export const Layout: React.FC<LayoutProps> = ({
   children,
   showSidebar = true,
   sidebarCollapsed: initialSidebarCollapsed = false,
-  pageTitle = '대시보드',
   showBackButton = false,
   onBackClick,
   showActionBar = false,
   actionBarContent,
   onSidebarToggle,
 }) => {
+  // 서버와 클라이언트에서 동일한 초기 상태 사용
   const [sidebarCollapsed, setSidebarCollapsed] = useState(initialSidebarCollapsed);
+
+  // 클라이언트에서만 localStorage에서 상태를 로드
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+    // localStorage에서 사이드바 상태를 가져오기
+    const saved = localStorage.getItem('sidebarCollapsed');
+    if (saved !== null) {
+      setSidebarCollapsed(JSON.parse(saved));
+    }
+  }, []);
+
+  // 사이드바 상태가 변경될 때마다 localStorage에 저장
+  useEffect(() => {
+    if (isClient) {
+      localStorage.setItem('sidebarCollapsed', JSON.stringify(sidebarCollapsed));
+    }
+  }, [sidebarCollapsed, isClient]);
 
   const handleBackClick = () => {
     if (onBackClick) {
@@ -48,9 +66,7 @@ export const Layout: React.FC<LayoutProps> = ({
         {showSidebar && (
           <aside className={`${styles.sidebar} ${sidebarCollapsed ? styles.sidebarCollapsed : ''}`}>
             <div className={styles.sidebarHeader}>
-              <h1 className={styles.systemTitle}>
-                {!sidebarCollapsed ? '쿠폰 관리 시스템' : 'CMS'}
-              </h1>
+              <h1 className={styles.systemTitle}>쿠폰 관리 시스템</h1>
               {showSidebar && (
                 <button
                   className={styles.sidebarToggleButton}
@@ -69,7 +85,7 @@ export const Layout: React.FC<LayoutProps> = ({
             <nav className={styles.nav}>
               <ul className={styles.navList}>
                 <li className={styles.navItem}>
-                  <a href="/coupons" className={styles.navLink}>
+                  <a href="/coupon/list" className={styles.navLink}>
                     {!sidebarCollapsed && <span>쿠폰 관리</span>}
                   </a>
                 </li>
@@ -87,17 +103,16 @@ export const Layout: React.FC<LayoutProps> = ({
         <main className={styles.main}>
           <div className={styles.content}>
             {/* Page Header */}
-            <div className={styles.pageHeader}>
-              <div className={styles.pageTitleSection}>
-                {showBackButton && (
+            {showBackButton && (
+              <div className={styles.pageHeader}>
+                <div className={styles.pageTitleSection}>
                   <button className={styles.backButton} onClick={handleBackClick} type="button">
                     <ArrowLeftOutlined className={styles.backIcon} />
                     <span className={styles.backText}>뒤로</span>
                   </button>
-                )}
-                <h2 className={styles.pageTitle}>{pageTitle}</h2>
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Page Content */}
             <div className={styles.pageContent}>{children}</div>

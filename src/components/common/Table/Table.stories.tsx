@@ -15,14 +15,6 @@ const meta: Meta<typeof Table> = {
       control: 'boolean',
       description: '페이지네이션 표시 여부',
     },
-    showPageSize: {
-      control: 'boolean',
-      description: '페이지 크기 선택기 표시 여부',
-    },
-    pageSizeOptions: {
-      control: 'object',
-      description: '페이지 크기 옵션 배열',
-    },
     emptyMessage: {
       control: 'text',
       description: '데이터가 없을 때 표시할 메시지',
@@ -108,15 +100,7 @@ export const Default: Story = {
       getCoreRowModel: getCoreRowModel(),
     });
 
-    return (
-      <Table
-        table={table}
-        showPagination={true}
-        showPageSize={false}
-        totalPage={1}
-        currentPage={0}
-      />
-    );
+    return <Table table={table} showPagination={true} totalPage={1} currentPage={0} />;
   },
 };
 
@@ -144,16 +128,7 @@ export const WithPageSize: Story = {
       getCoreRowModel: getCoreRowModel(),
     });
 
-    return (
-      <Table
-        table={table}
-        showPagination={true}
-        showPageSize={true}
-        pageSizeOptions={[5, 10, 20]}
-        totalPage={1}
-        currentPage={0}
-      />
-    );
+    return <Table table={table} showPagination={true} totalPage={1} currentPage={0} />;
   },
 };
 
