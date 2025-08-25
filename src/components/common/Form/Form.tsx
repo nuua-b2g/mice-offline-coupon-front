@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import {
   FormProvider,
   useForm,
@@ -9,7 +9,17 @@ import {
   DefaultValues,
 } from 'react-hook-form';
 import styles from './Form.module.css';
-import Input, { InputProps } from '@/components/common/Input';
+import Input from '@/components/common/Input';
+
+// Input 컴포넌트의 props 타입을 직접 정의
+interface InputProps {
+  label?: string;
+  error?: string;
+  icon?: ReactNode;
+  link?: string;
+  required?: boolean;
+  [key: string]: unknown;
+}
 
 export interface FormField {
   name: string;
@@ -158,7 +168,6 @@ const FormFieldItem: React.FC<{ field: FormField }> = ({ field }) => {
     }),
   };
 
-  const commonClass = `${styles.formInput} ${field.className || ''}`;
   const ariaInvalid = !!error || undefined;
 
   const renderField = () => {
