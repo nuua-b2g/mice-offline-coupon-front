@@ -1,0 +1,120 @@
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.inputContainer {
+  position: relative;
+  width: 100%;
+}
+
+.iconWrapper {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  z-index: 1;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  color: #111827;
+  background-color: white;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    background-color 0.2s,
+    color 0.2s;
+  box-sizing: border-box;
+}
+
+/* 자동완성 시 파란색 배경 제거 */
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus,
+.input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  -webkit-text-fill-color: #111827 !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* disabled 상태 스타일 - 우선순위 높임 */
+.input:disabled,
+.input:disabled:-webkit-autofill,
+.input:disabled:-webkit-autofill:hover,
+.input:disabled:-webkit-autofill:focus,
+.input:disabled:-webkit-autofill:active {
+  background-color: #f0f0f0 !important;
+  -webkit-box-shadow: 0 0 0 30px #f0f0f0 inset !important;
+  border-color: #d1d5db;
+  color: #9ca3af !important;
+  -webkit-text-fill-color: #9ca3af !important;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.input:disabled + .iconWrapper {
+  color: #9ca3af;
+  opacity: 0.7;
+}
+
+.inputWithIcon {
+  padding-left: 2.5rem;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+.input:disabled:focus {
+  border-color: #d1d5db;
+  box-shadow: none;
+}
+
+.input::placeholder {
+  color: #6b7280;
+}
+
+.input:disabled::placeholder {
+  color: #9ca3af;
+  opacity: 0.7;
+}
+
+.input.error {
+  border-color: #ef4444;
+}
+
+.input.error:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+}
+
+.errorMessage {
+  font-size: 0.75rem;
+  color: #ef4444;
+  margin-top: 0.25rem;
+}
+
+.labelBox {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
